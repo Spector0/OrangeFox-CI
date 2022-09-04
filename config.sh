@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Device
-export FOX_BRANCH="fox_11.0"
+export TWRP_BRANCH="twrp-12.1"
 export DT_LINK="https://github.com/Spector0/Device_Oneplus_Oscar_TWRP -b fox_11.0"
 
 export DEVICE="oscar"
@@ -13,20 +13,7 @@ export OEM="oneplus"
 ## "vendorbootimage" - for devices Using vendor boot for the recovery ramdisk (Usually for devices shipped with Android 12 or higher)
 export TARGET="bootimage"
 
-export OUTPUT="OrangeFox*.zip"
-
-# Additional Dependencies (eg: Kernel Source)
-# Format: "repo dest"
-DEPS=(
-    "https://github.com/OrangeFoxRecovery/Avatar.git misc"
-)
-
-# Extra Command
-export EXTRA_CMD="export OF_MAINTAINER=Spector"
-
-# Magisk
-## Use the Latest Release of Magisk for the OrangeFox addon
-export OF_USE_LATEST_MAGISK=true
+export OUTPUT="TWRP*.zip"
 
 # Not Recommended to Change
 export SYNC_PATH="$HOME/work" # Full (absolute) path.
