@@ -12,7 +12,7 @@ telegram_message() {
 }
 
 # Change to the Source Directory
-cd $SYNC_PATH
+cd 
 
 # Color
 ORANGE='\033[0;33m'
@@ -36,7 +36,17 @@ fi
 # Upload to WeTransfer
 # NOTE: the current Docker Image, "registry.gitlab.com/sushrut1101/docker:latest", includes the 'transfer' binary by Default
 transfer wet $FILENAME > link.txt || { echo "ERROR: Failed to Upload the Build!" && exit 1; }
+transfer wet boot.img > link.txt
+transfer wet recovery-installer.zip > link.txt
 
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
 # Mirror to oshi.at
 curl -T $FILENAME https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; }
 
@@ -55,12 +65,12 @@ DATE_S=$(date +"%T")
 # Send the Message on Telegram
 echo -e \
 "
-🦊 OrangeFox Recovery CI
+🙃 TWRP Recovery ci
 
 ✅ Build Completed Successfully!
 
 📱 Device: "${DEVICE}"
-🖥 Build System: "${FOX_BRANCH}"
+🖥 Build System: "${TWRP_BRANCH}"
 ⬇️ Download Link: <a href=\"${DL_LINK}\">Here</a>
 📅 Date: "$(date +%d\ %B\ %Y)"
 ⏱ Time: "$(date +%T)"
