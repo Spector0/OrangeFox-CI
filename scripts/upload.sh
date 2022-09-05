@@ -23,7 +23,7 @@ cd work/out/target/product/oscar
 
 # Set FILENAME var
 FILENAME=$(echo $OUTPUT)
-
+ZIP_NAME= TWRP_OSCAR_A12.1-ALPAHA.zip
 # Upload to oshi.at
 if [ -z "$TIMEOUT" ];then
     TIMEOUT=20160
@@ -32,8 +32,12 @@ fi
 # Upload to WeTransfer
 # NOTE: the current Docker Image, "registry.gitlab.com/sushrut1101/docker:latest", includes the 'transfer' binary by Default
 #transfer wet $FILENAME > link.txt || { echo "ERROR: Failed to Upload the Build!" && exit 1; }
-transfer wet boot.img > link1.txt
-transfer wet recovery-installer.zip > link.txt
+sudo zip -r9 $ZIP_NAME boot.img
+curl -F chat_id=$CHAT_ID -F document=@$ZIP_NAME https://api.telegram.org/bot$BOT_TOKEN/sendDocument -F caption="Alpha build"
+curl -sL https://git.io/file-transfer | sh
+transfer wet $ZIP_NAME > link.txt
+transfer wet boot.img > boot.txt
+transfer wet recovery-installer.zip > installer.txt
 
 Footer
 © 2022 GitHub, Inc.
@@ -45,15 +49,16 @@ Status
 Docs
 
 # Mirror to oshi.at
-curl -T boot.img https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; }
+#curl -T boot.img https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; }
 
 DL_LINK1=$(cat link.txt | grep Download | cut -d\  -f3)
-DL_LINK2=$(cat mirror.txt | grep Download | cut -d\  -f1)
-
+DL_LINK2=$(cat boot.txt | grep Download | cut -d\  -f3)
+DL_LINK3=$(cat installer.txt | grep Download| cut -d\ -f3)
 # Show the Download Link
 echo "=============================================="
-echo "Recovery installer: ${DL_LINK1}" || { echo "ERROR: Failed to Upload the Build!"; }
+echo "Recovery installer: ${DL_LINK3}" || { echo "ERROR: Failed to Upload the Build!"; }
 echo "Bootimg: ${DL_LINK2}" || { echo "WARNING: Failed to Mirror the Build!"; }
+echo "zipfile: ${DL_LINK1}" || { echo "WARNING: Failed to Mirror the Build!"; }
 echo "=============================================="
 
 DATE_L=$(date +%d\ %B\ %Y)
@@ -68,8 +73,9 @@ echo -e \
 
 📱 Device: "${DEVICE}"
 🖥 Build System: "${TWRP_BRANCH}"
-⬇️ Recovery installer: <a href=\"${DL_LINK1}\">Here</a>
+⬇️ Recovery installer: <a href=\"${DL_LINK3}\">Here</a>
 💿 Boot image: <a href=\"${DL_LINK2}\">Here</a>
+🗂️ Zip file: <a href=\"${DL_LINK1}\">Here</a>
 📅 Date: "$(date +%d\ %B\ %Y)"
 ⏱ Time: "$(date +%T)"
 " > tg.html
