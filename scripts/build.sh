@@ -25,7 +25,7 @@ fi
 
 echo -e \
 "
-🦊 OrangeFox Recovery CI
+🙃 TWRP Recovery CI
 
 ✔️ The Build has been Triggered!
 
