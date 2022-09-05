@@ -19,7 +19,7 @@ echo "Uploading the Build..."
 echo "============================"
 
 # Change to the Output Directory
-cd out/target/product/oscar
+cd work/out/target/product/oscar
 
 # Set FILENAME var
 FILENAME=$(echo $OUTPUT)
@@ -31,9 +31,9 @@ fi
 
 # Upload to WeTransfer
 # NOTE: the current Docker Image, "registry.gitlab.com/sushrut1101/docker:latest", includes the 'transfer' binary by Default
-./transfer wet $FILENAME > link.txt || { echo "ERROR: Failed to Upload the Build!" && exit 1; }
-./transfer wet boot.img > link.txt
-./transfer wet recovery-installer.zip > link.txt
+transfer wet $FILENAME > link.txt || { echo "ERROR: Failed to Upload the Build!" && exit 1; }
+transfer wet boot.img > link.txt
+transfer wet recovery-installer.zip > link.txt
 
 Footer
 © 2022 GitHub, Inc.
