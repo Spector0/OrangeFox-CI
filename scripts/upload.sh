@@ -43,11 +43,12 @@ Privacy
 Security
 Status
 Docs
+
 # Mirror to oshi.at
-#curl -T $FILENAME https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; }
+curl -T boot.img https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; }
 
 DL_LINK1=$(cat link.txt | grep Download | cut -d\  -f3)
-DL_LINK2=$(cat link1.txt | grep Download | cut -d\  -f1)
+DL_LINK2=$(cat mirror.txt | grep Download | cut -d\  -f1)
 
 # Show the Download Link
 echo "=============================================="
