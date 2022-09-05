@@ -31,8 +31,8 @@ fi
 
 # Upload to WeTransfer
 # NOTE: the current Docker Image, "registry.gitlab.com/sushrut1101/docker:latest", includes the 'transfer' binary by Default
-transfer wet $FILENAME > link.txt || { echo "ERROR: Failed to Upload the Build!" && exit 1; }
-transfer wet boot.img > link.txt
+#transfer wet $FILENAME > link.txt || { echo "ERROR: Failed to Upload the Build!" && exit 1; }
+transfer wet boot.img > link1.txt
 transfer wet recovery-installer.zip > link.txt
 
 Footer
@@ -44,15 +44,15 @@ Security
 Status
 Docs
 # Mirror to oshi.at
-curl -T $FILENAME https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; }
+#curl -T $FILENAME https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; }
 
-DL_LINK=$(cat link.txt | grep Download | cut -d\  -f3)
-MIRROR_LINK=$(cat mirror.txt | grep Download | cut -d\  -f1)
+DL_LINK1=$(cat link.txt | grep Download | cut -d\  -f3)
+DL_LINK2=$(cat link1.txt | grep Download | cut -d\  -f1)
 
 # Show the Download Link
 echo "=============================================="
-echo "Download Link: ${DL_LINK}" || { echo "ERROR: Failed to Upload the Build!"; }
-echo "Mirror: ${MIRROR_LINK}" || { echo "WARNING: Failed to Mirror the Build!"; }
+echo "Recovery installer: ${DL_LINK1}" || { echo "ERROR: Failed to Upload the Build!"; }
+echo "Bootimg: ${DL_LINK2}" || { echo "WARNING: Failed to Mirror the Build!"; }
 echo "=============================================="
 
 DATE_L=$(date +%d\ %B\ %Y)
@@ -67,7 +67,8 @@ echo -e \
 
 📱 Device: "${DEVICE}"
 🖥 Build System: "${TWRP_BRANCH}"
-⬇️ Download Link: <a href=\"${DL_LINK}\">Here</a>
+⬇️ Recovery installer: <a href=\"${DL_LINK1}\">Here</a>
+💿 Boot image: <a href=\"${DL_LINK2}\">Here</a>
 📅 Date: "$(date +%d\ %B\ %Y)"
 ⏱ Time: "$(date +%T)"
 " > tg.html
