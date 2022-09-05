@@ -12,7 +12,7 @@ telegram_message() {
 }
 
 # Change to the Source Directory
-cd $SYNC_PATH
+cd
 
 # Color
 ORANGE='\033[0;33m'
