@@ -73,9 +73,7 @@ echo -e \
 
 📱 Device: "${DEVICE}"
 🖥 Build System: "${TWRP_BRANCH}"
-⬇️ Recovery installer: <a href=\"${DL_LINK3}\">Here</a>
 💿 Boot image: <a href=\"${DL_LINK2}\">Here</a>
-🗂️ Zip file: <a href=\"${DL_LINK1}\">Here</a>
 📅 Date: "$(date +%d\ %B\ %Y)"
 ⏱ Time: "$(date +%T)"
 " > tg.html
