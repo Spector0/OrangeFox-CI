@@ -51,6 +51,6 @@ $EXTRA_CMD
 #export LC_ALL="C"
 
 lunch twrp_$DEVICE-eng 
-repopick 5405 5540 5445
+repopick 5405 5540 5445 5831
 rm -rf .repo/
 mka bootimage
