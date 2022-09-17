@@ -53,4 +53,4 @@ $EXTRA_CMD
 lunch twrp_$DEVICE-eng 
 repopick 5405 5540 5445 5831
 rm -rf .repo/
-mka bootimage
+mka vendorbootimage
