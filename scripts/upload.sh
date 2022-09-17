@@ -36,7 +36,7 @@ sudo zip -r9 $ZIP_NAME boot.img
 curl -F chat_id=$CHAT_ID -F document=@$ZIP_NAME https://api.telegram.org/bot$BOT_TOKEN/sendDocument -F caption="Alpha build"
 curl -sL https://git.io/file-transfer | sh
 transfer wet $ZIP_NAME > link.txt
-transfer wet boot.img > boot.txt
+transfer wet vendor_boot.img > boot.txt
 transfer wet recovery-installer.zip > installer.txt
 
 Footer
