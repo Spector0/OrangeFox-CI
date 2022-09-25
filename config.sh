@@ -2,7 +2,7 @@
 
 # Device
 export TWRP_BRANCH="twrp-12.1"
-export DT_LINK="https://github.com/Spector0/Device_Oneplus_Oscar_TWRP -b fox_11.0"
+export DT_LINK="https://github.com/Spector0/Device_Oneplus_Oscar_TWRP -b Alpha_1"
 
 export DEVICE="oscar"
 export OEM="oneplus"
