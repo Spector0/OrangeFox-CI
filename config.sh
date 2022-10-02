@@ -4,8 +4,8 @@
 export TWRP_BRANCH="twrp-12.1"
 export DT_LINK="https://github.com/Spector0/Device_Oneplus_Oscar_TWRP -b Alpha_1"
 
-export DEVICE="oscar"
-export OEM="oneplus"
+export DEVICE="RMX3471"
+export OEM="realme"
 
 # Build Target
 ## "recoveryimage" - for A-Only Devices without using Vendor Boot
