@@ -19,7 +19,7 @@ echo "Uploading the Build..."
 echo "============================"
 
 # Change to the Output Directory
-cd work/out/target/product/oscar
+cd work/out/target/product/RMX3471
 
 # Set FILENAME var
 FILENAME=$(echo $OUTPUT)
